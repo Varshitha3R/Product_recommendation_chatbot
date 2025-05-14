@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendation Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #151515;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .main-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+        .sidebar {
+            width: 220px;
+            background: #0e0e0f;
+            border-right: 1px solid #222;
+            padding: 24px 12px;
+            overflow-y: auto;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+        .product-btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px 12px;
+            background: #23242a;
+            color: #eaf2fb;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        .product-btn:hover {
+            background: #36374a;
+        }
+        .chat-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url('C:/Users/Admin/Desktop/aictenew/ok/chatbotf.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            position: relative;
+        }
+        .chat-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(21,21,21,0.78);
+            z-index: 0;
+        }
+        .chat-box {
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(60,80,180,0.07);
+            margin: 24px 0;
+            overflow: hidden;
+            z-index: 1;
+            background: rgba(34,34,34,0.97);
+        }
+        .messages {
+            flex: 1;
+            padding: 24px 18px;
+            overflow-y: auto;
+            background: transparent;
+        }
+        .message {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .message.user {
+            justify-content: flex-end;
+        }
+        .message.bot {
+            justify-content: flex-start;
+        }
+        .bubble {
+            max-width: 70%;
+            padding: 13px 18px;
+            border-radius: 16px;
+            font-size: 1em;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .user .bubble {
+            background: #007bff;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+        .bot .bubble {
+            background: #23242a;
+            color: #e9e3e3;
+            border-bottom-left-radius: 4px;
+        }
+        .product-details {
+            background: #191a1c;
+            border: 1px solid #2c2c2c;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0 0 0;
+            display: flex;
+            align-items: center;
+        }
+        .product-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 16px;
+            background: #fff;
+        }
+        .recommend-chat-list {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .rec-chat-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .rec-chat-img {
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+            border: 2px solid #eaf2fb;
+            transition: border 0.2s;
+            background: #fff;
+        }
+        .rec-chat-btn:hover .rec-chat-img {
+            border: 2px solid #007bff;
+        }
+        .rec-chat-name {
+            font-size: 0.85em;
+            color: #e9e3e3;
+            margin-top: 4px;
+            text-align: center;
+            max-width: 60px;
+            word-break: break-word;
+        }
+        .input-row {
+            display: flex;
+            border-top: 1px solid #23242a;
+            background: #191a1c;
+            padding: 16px 20px;
+        }
+        .input-row input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #333;
+            border-radius: 7px;
+            font-size: 1em;
+            margin-right: 12px;
+            background: #23242a;
+            color: #fff;
+        }
+        .input-row input:focus {
+            outline: 2px solid #007bff;
+        }
+        .input-row button {
+            padding: 12px 24px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .input-row button:hover {
+            background: #0056b3;
+        }
+        .recommend {
+            width: 220px;
+            background: #161617;
+            border-left: 1px solid #222;
+            padding: 24px 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .recommend-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #007bff;
+        }
+        .recommend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .rec-item-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+        }
+        .rec-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+            border: 2px solid #eaf2fb;
+            transition: border 0.2s;
+            background: #fff;
+        }
+        .rec-item-btn:hover .rec-img {
+            border: 2px solid #007bff;
+        }
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; width: 100vw; min-height: 100vh; }
+            .sidebar, .recommend { width: 100%; height: auto; border: none; }
+            .chat-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="sidebar">
+        <h3>Products</h3>
+        <div id="product-list"></div>
+    </div>
+    <div class="chat-section">
+        <div class="chat-overlay"></div>
+        <div class="chat-box">
+            <div class="messages" id="messages"></div>
+            <form class="input-row" id="chat-form" autocomplete="off">
+                <input type="text" id="user-input" placeholder="Ask about a product..." />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="recommend">
+        <div class="recommend-title">Recommended</div>
+        <div class="recommend-list" id="recommend-list"></div>
+    </div>
+</div>
+<script>
+const BACKEND_URL = "http://127.0.0.1:5000";
+const productList = document.getElementById('product-list');
+const messages = document.getElementById('messages');
+const chatForm = document.getElementById('chat-form');
+const userInput = document.getElementById('user-input');
+const recommendList = document.getElementById('recommend-list');
+
+let allProducts = [];
+
+function isGreetingOrProductListQuery(query) {
+    const q = query.trim().toLowerCase();
+    return (
+        q === "hi" ||
+        q === "hello" ||
+        q === "hey" ||
+        q === "yes" ||
+        q === "yeah" ||
+        q === "yep" ||
+        q === "sure" ||
+        q === "ok" ||
+        q === "okay" ||
+        q ==="How are you?" ||
+        q ===" Hi, How are you?" ||
+        q.includes("what are the products") ||
+        q.includes("what products are available") ||
+        q.includes("list products") ||
+        q.includes("show products") ||
+        q === "products"
+    );
+}
+
+
+function addMessage(text, isUser, product=null, recommendations=[]) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = text;
+    msgDiv.appendChild(bubble);
+
+    if (product) {
+        const pd = document.createElement('div');
+        pd.className = 'product-details';
+        pd.innerHTML = `
+            <img class="product-img" src="${product.image_url}" alt="${product.name}">
+            <div>
+                <b>${product.name}</b><br>
+                ${product.description}<br>
+                <span style="color:#007bff"><b>Price:</b> $${product.price}</span><br>
+                <span style="color:#555"><b>Color:</b> ${product.color}</span>
+            </div>
+        `;
+        bubble.appendChild(pd);
+    }
+
+    messages.appendChild(msgDiv);
+
+    if (recommendations && recommendations.length > 0) {
+        const recList = document.createElement('div');
+        recList.className = 'recommend-chat-list';
+        recommendations.forEach(p => {
+            const btn = document.createElement('button');
+            btn.className = 'rec-chat-btn';
+            btn.title = p.name;
+            btn.onclick = (e) => {
+                e.preventDefault();
+                handleProductClick(p.name);
+            };
+            btn.innerHTML = `<img class="rec-chat-img" src="${p.image_url}" alt="${p.name}"><div class="rec-chat-name">${p.name}</div>`;
+            recList.appendChild(btn);
+        });
+        messages.appendChild(recList);
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function updateRecommendations(recs) {
+    recommendList.innerHTML = '';
+    if (!recs || recs.length === 0) return;
+    recs.forEach(p => {
+        const btn = document.createElement('button');
+        btn.className = 'rec-item-btn';
+        btn.title = p.name;
+        btn.onclick = () => handleProductClick(p.name);
+        btn.innerHTML = `<img class="rec-img" src="${p.image_url}" alt="${p.name}">`;
+        recommendList.appendChild(btn);
+    });
+}
+
+function handleProductClick(name) {
+    userInput.value = `Tell me about ${name}`;
+    chatForm.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+}
+
+fetch(`${BACKEND_URL}/products`)
+    .then(res => res.json())
+    .then(data => {
+        allProducts = data;
+        productList.innerHTML = '';
+        data.forEach(p => {
+            const btn = document.createElement('button');
+            btn.className = 'product-btn';
+            btn.innerText = p.name;
+            btn.onclick = () => handleProductClick(p.name);
+            productList.appendChild(btn);
+        });
+    });
+
+chatForm.onsubmit = function(e) {
+    e.preventDefault();
+    const query = userInput.value.trim();
+    if (!query) return;
+    addMessage(query, true);
+    userInput.value = '';
+
+    if (isGreetingOrProductListQuery(query)) {
+        updateRecommendations([]);
+        if (
+            query.toLowerCase().includes("what are the products") ||
+            query.toLowerCase().includes("what products are available") ||
+            query.toLowerCase().includes("list products") ||
+            query.toLowerCase().includes("show products") ||
+            query.toLowerCase() === "products"
+        ) {
+            const names = allProducts.map(p => p.name).join(', ');
+            addMessage(`<span style="color:#00d4ff;">Here are the available products:</span><br>${names}`, false);
+        } else {
+            addMessage("Hi! You can ask about any product or click on one from the sidebar.", false);
+        }
+        return;
+    }
+
+    fetch(`${BACKEND_URL}/product`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({query})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.product) {
+            addMessage('', false, data.product, data.recommendations || []);
+            updateRecommendations(data.recommendations || []);
+        } else {
+            addMessage(data.response, false);
+            updateRecommendations([]);
+        }
+    });
+};
+
+addMessage('Hello! Welcome to the Product Chatbot. Here, you can explore various products, check their prices and details, and get assistance in finding the right item for your needs. This chatbot can also suggest similar products based on your interests. What product are you looking for today?', false);
+</script>
+</body>
+</html>

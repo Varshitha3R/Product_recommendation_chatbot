@@ -1,0 +1,41 @@
+product_id,title,description,category,price,image_path,color
+101,Nike Air Max,Comfortable running shoes with max air cushion.,Footwear,99.99,images/nike_air_max.jpg,Red
+102,Adidas Ultraboost,Stylish and responsive performance sneakers.,Footwear,129.5,images/adidas_ultraboost.jpg,Black
+103,Puma Speed,Lightweight and breathable running shoes.,Footwear,89.99,images/puma_speed.jpg,Black
+104,Salomon Speedcross,High-performance trail running shoes.,Footwear,109.99,images/salomon_speedcross.jpg,Blue
+105,Reebok CrossFit,Durable and supportive cross-training shoes.,Footwear,119.99,images/reebok_crossfit.jpg,Red
+106,New Balance Classic,Classic design with modern comfort features.,Footwear,79.99,images/new_balance_classic.jpg,Red
+107,Asics Gel,Versatile sneakers for everyday wear.,Footwear,69.99,images/asics_gel.jpg,Black
+108,Adidas Parley,Eco-friendly running shoes made with recycled materials.,Footwear,99.99,images/adidas_parley.jpg,Blue
+109,Nike Air Jordan,High-top sneakers with ankle support.,Footwear,89.99,images/nike_air_jordan.jpg,Gray
+110,Decathlon Kiprun,Budget-friendly running shoes for beginners.,Footwear,49.99,images/decathlon_kiprun.jpg,White
+111,Apple iPhone 14,Latest smartphone with A15 Bionic chip and dual camera.,Electronics,799,images/iphone_14.jpg,Blue
+112,Samsung Galaxy S23,Flagship Android phone with AMOLED display.,Electronics,749,images/galaxy_s23.jpg,Gray
+113,OnePlus Nord,Affordable smartphone with 5G connectivity.,Electronics,499,images/oneplus_nord.jpg,Black
+114,Google Pixel 6a,Compact and lightweight smartphone.,Electronics,399,images/google_pixel.jpg,White
+115,Asus ROG Phone,Gaming smartphone with high refresh rate display.,Electronics,899,images/asus_rog_phone.jpg,Blue
+116,Xiaomi Redmi Note,Budget-friendly smartphone with large battery.,Electronics,299,images/xiaomi_redmi.jpg,Gray
+117,Samsung Galaxy S21,Flagship smartphone with advanced camera system.,Electronics,999,images/samsung_galaxy_s21.jpg,Black
+118,Samsung Z Fold,Foldable smartphone with flexible display.,Electronics,1099,images/samsung_z_fold.jpg,Blue
+119,Samsung Note Series,Smartphone with stylus support.,Electronics,799,images/samsung_note.jpg,Gray
+120,CAT Rugged Phone,Rugged smartphone with waterproof design.,Electronics,599,images/cat_phone.jpg,Black
+121,Ray-Ban Sunglasses,UV-protected sunglasses with polarised lenses.,Accessories,159.99,images/rayban.jpg,Brown
+122,Ray-Ban Aviator,Classic aviator sunglasses with metal frame.,Accessories,129.99,images/rayban_aviator.jpg,Black
+123,Ray-Ban Round,Stylish round sunglasses with acetate frame.,Accessories,99.99,images/rayban_round.jpg,Tortoise
+124,Oakley Wrap,Sporty wraparound sunglasses for active wear.,Accessories,89.99,images/oakley_wrap.jpg,Black
+125,Vintage Square,Retro square sunglasses with bold design.,Accessories,79.99,images/vintage_square.jpg,Gray
+126,Polarized Light,Polarized sunglasses with lightweight frame.,Accessories,69.99,images/polarized_light.jpg,Blue
+127,Prada Luxury,Luxury sunglasses with gradient lenses.,Accessories,199.99,images/prada_luxury.jpg,Black
+128,Minimalist Thin,Minimalist design sunglasses with thin frame.,Accessories,59.99,images/minimalist_thin.jpg,Gray
+129,Oversized Fashion,Oversized sunglasses for bold fashion statement.,Accessories,89.99,images/oversized_fashion.jpg,Black
+130,Vintage Keyhole,Vintage-inspired sunglasses with keyhole bridge.,Accessories,79.99,images/vintage_keyhole.jpg,Tortoise
+131,Wooden Study Table,Solid wood desk with drawers and smooth finish.,Furniture,215,images/study_table.jpg,Walnut
+132,Glass Metal Desk,Modern glass top desk with metal frame.,Furniture,299,images/glass_metal_desk.jpg,Black
+133,Corner Desk,Compact corner desk with built-in shelves.,Furniture,179,images/corner_desk.jpg,White
+134,Standing Desk,Ergonomic standing desk with adjustable height.,Furniture,399,images/standing_desk.jpg,Wood
+135,Industrial Desk,Industrial-style desk with reclaimed wood surface.,Furniture,249,images/industrial_desk.jpg,Brown
+136,Minimalist Desk,Minimalist desk with clean lines and open storage.,Furniture,159,images/minimalist_desk.jpg,Gray
+137,Executive Desk,Executive desk with leather inlay and ample storage.,Furniture,499,images/executive_desk.jpg,Black
+138,Writing Desk,Compact writing desk with pull-out keyboard tray.,Furniture,129,images/writing_desk.jpg,White
+139,Vintage Carved Desk,Vintage-style desk with ornate carvings.,Furniture,349,images/vintage_carved_desk.jpg,Antique
+140,Budget Laptop,Affordable laptop with solid performance.,Electronics,20,images/laptop.jpg,Black
