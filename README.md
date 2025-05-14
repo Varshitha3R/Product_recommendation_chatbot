@@ -17,15 +17,6 @@ An interactive, AI-driven product recommendation chatbot built using Flask, Lang
 
 ---
 
-## Demo Screenshots
-
-Add screenshots here showing:
-- The chatbot interface
-- A product query with output
-- Product recommendation cards
-
----
-
 ## Tech Stack
 
 | Layer        | Tools / Frameworks                          |
