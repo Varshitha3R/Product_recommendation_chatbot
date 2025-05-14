@@ -1,8 +1,4 @@
-Certainly! Here's the cleaned version of the `README.md` **without emojis**, ideal for uploading to GitHub:
 
----
-
-```markdown
 # AI-Powered Product Recommendation Chatbot
 
 An interactive, AI-driven product recommendation chatbot built using Flask, LangChain, OpenAI GPT-4o-mini, and FAISS for semantic product retrieval. Users can ask natural language queries to explore products and receive personalized recommendations.
